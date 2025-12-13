@@ -1,0 +1,12 @@
+Column Name,Data Type,Description,Generation Logic / Business Context
+Report_ID,STRING,Unique identifier for the monthly report record.,PROC_[Processor_ID]_[YYYYMM]
+Processor_ID,STRING,Unique ID for the Food Processor.,Synthetic: PROC_61001 through PROC_61020
+Agreement_ID,STRING,ID of the specific Processing Agreement/Contract.,Synthetic: AGR_[Year]_[ID]
+Product_ID,STRING,"USDA Bulk Commodity ID (e.g., US_BEEF_GR_BULK).",Commodity being held for Further Processing.
+Product_Name,STRING,Full name of the bulk commodity.,
+Report_Date,DATE,Date the MPR was submitted (end of month).,Synthetic: 2025-10-31
+Bulk_Inventory_LBS,FLOAT,Current inventory of bulk commodity held by processor.,"Generated: Random High Volume (5,000 - 30,000 LBS)"
+LBS_Processed_MTD,FLOAT,Pounds of bulk commodity processed (drawn down) in the last month.,"Generated: Random, often below target for non-compliant scenarios."
+Allocation_LBS,FLOAT,Total LBS allocated under the current Agreement/Contract period.,"Generated: Fixed for the agreement (50,000 - 200,000 LBS)"
+Target_LBS_MTD,FLOAT,Contractual target for LBS to be processed per month.,Calculated: Allocation_LBS / 12
+Days_Held_Inventory,INTEGER,Number of days the bulk commodity has been held since receipt.,Generated: Random (30 - 150 days)
